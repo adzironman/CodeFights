@@ -1,0 +1,44 @@
+/*Given a string, find out if its characters can be rearranged to form a palindrome.
+
+Example
+
+For inputString = "aabb", the output should be
+palindromeRearranging(inputString) = true.
+
+We can rearrange "aabb" to make "abba", which is a palindrome.
+
+Input/Output
+
+[time limit] 3000ms (java)
+[input] string inputString
+
+A string consisting of lowercase English letters.
+
+Guaranteed constraints:
+1 ≤ inputString.length ≤ 50.
+
+[output] boolean
+
+true if the characters of the inputString can be rearranged to form a palindrome, false otherwise.*/
+
+boolean palindromeRearranging(String input) {
+		int[] charTable = new int[128];
+		for (int i=0; i<input.length(); i++) {
+			charTable[(int)input.charAt(i)]++;
+		}
+        int oddCount = 0 ;
+        for(int i  = 0 ; i < 128 ; i++)
+        {
+            if(charTable[i] % 2!=0)
+            {
+                oddCount++;
+            }
+        }
+
+        if(oddCount != 0 && oddCount != 1)
+        {
+            return false;
+        }
+        return true;
+				
+	}
